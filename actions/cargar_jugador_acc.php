@@ -19,7 +19,7 @@
     echo $extension;
     $nombreNuevo = time() . rand(01,99). ".$extension";
     echo "<p>" . $nombreNuevo . "</p>";
-    $archivoSubido = move_uploaded_file($datosArchivo['tmp_name'], "../assets/img/$nombreNuevo");
+    $archivoSubido = move_uploaded_file($datosArchivo['tmp_name'], "../assets/img/l/$nombreNuevo");
   
     $fecha_creacion = date("Y-m-d");
 

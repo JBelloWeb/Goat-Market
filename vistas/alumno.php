@@ -38,9 +38,10 @@
     </div>
 
     <figure>
-        <img 
-            src="assets/img/alumno/profile-img.png" 
-            alt="Foto de Juan Ignacio"
-        >
+        <picture>
+            <source srcset="assets/img/alumno/s/profile-img.png" media="(max-width: 480px)">
+            <source srcset="assets/img/alumno/m/profile-img.png" media="(max-width: 768px)">
+            <img src="assets/img/alumno/l/profile-img.png" alt="Foto de Juan Ignacio">
+        </picture>
     </figure>
 </section>

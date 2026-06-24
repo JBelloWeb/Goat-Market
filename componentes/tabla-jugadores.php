@@ -14,7 +14,11 @@
             <tr>
                 <td>
                     <?php if($jugador->getImagen()): ?>
-                        <img src="assets/img/<?= $jugador->getImagen() ?>" alt="<?= $jugador->getNombre() ?>" width="50">
+                        <picture>
+                            <source srcset="assets/img/s/<?= $jugador->getImagen() ?>" media="(max-width: 480px)">
+                            <source srcset="assets/img/m/<?= $jugador->getImagen() ?>" media="(max-width: 768px)">
+                            <img src="assets/img/l/<?= $jugador->getImagen() ?>" alt="<?= $jugador->getNombre() ?>" width="50">
+                        </picture>
                     <?php endif; ?>
                 </td>
                 <td><?= htmlspecialchars($jugador->getNombre()) ?></td>

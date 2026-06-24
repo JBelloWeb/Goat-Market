@@ -37,7 +37,11 @@
     ?>
     <div>
         <p>Foto actual</p>
-        <img src="../assets/img/<?= $fotoJugador; ?>" alt="<?= $jugador -> getNombre(); ?>">
+        <picture>
+            <source srcset="../assets/img/s/<?= $fotoJugador; ?>" media="(max-width: 480px)">
+            <source srcset="../assets/img/m/<?= $fotoJugador; ?>" media="(max-width: 768px)">
+            <img src="../assets/img/l/<?= $fotoJugador; ?>" alt="<?= $jugador -> getNombre(); ?>">
+        </picture>
         <div>
             <label for="foto">Actualizar Foto</label>
             <input type="file" id="foto" name="foto">

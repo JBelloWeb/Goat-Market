@@ -12,7 +12,7 @@
         $nombreOriginal = (explode(".", $datosArchivo['name']));
         $extension = end($nombreOriginal);
         $nombreNuevo = time() . rand(01,99) . ".$extension";
-        $archivoSubido = move_uploaded_file($datosArchivo['tmp_name'], "../assets/img/$nombreNuevo");
+        $archivoSubido = move_uploaded_file($datosArchivo['tmp_name'], "../assets/img/l/$nombreNuevo");
     }
 
     $jugador = Jugadores::get_x_id($datos['id']);
@@ -33,7 +33,7 @@
         }
 
         if(!empty($imagenAnterior)){
-            $archivo = "../assets/img/" . $imagenAnterior;
+            $archivo = "../assets/img/l/" . $imagenAnterior;
 
             if(file_exists($archivo)){
 

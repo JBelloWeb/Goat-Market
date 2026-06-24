@@ -1,7 +1,11 @@
 <div class="card" style="--main-color: <?= $jugador->getPaisColor() ?>">
     <figure>
         <?php if ($jugador->getImagen()): ?>
-            <img src="assets/img/<?= $jugador->getImagen() ?>" alt="<?= $jugador->getNombre() ?>">
+            <picture>
+                <source srcset="assets/img/s/<?= $jugador->getImagen() ?>" media="(max-width: 480px)">
+                <source srcset="assets/img/m/<?= $jugador->getImagen() ?>" media="(max-width: 768px)">
+                <img src="assets/img/l/<?= $jugador->getImagen() ?>" alt="<?= $jugador->getNombre() ?>">
+            </picture>
         <?php endif; ?>
         <figcaption>
             <a href="?sec=detalle&id=<?= $jugador -> getId(); ?>" class="detalle">Detalle</a>
