@@ -1,0 +1,104 @@
+[
+    {
+        "vinculo": "404",
+        "titulo": "404",
+        "inMenu": false,
+        "ser_administrador": false
+    },
+    {
+        "vinculo": "inicio",
+        "titulo": "Jugadores",
+        "inMenu": true,
+        "ser_administrador": false
+    },
+    {
+        "vinculo": "filtro",
+        "titulo": "Filtro",
+        "inMenu": false,
+        "ser_administrador": false
+    },
+    {
+        "vinculo": "precio",
+        "titulo": "Jugadores por precio",
+        "inMenu": false,
+        "ser_administrador": false
+    },
+    {
+        "vinculo": "alumno",
+        "titulo": "Alumno",
+        "inMenu": true,
+        "ser_administrador": false
+    },
+    {
+        "vinculo": "contacto",
+        "titulo": "Contacto",
+        "inMenu": true,
+        "ser_administrador": false
+    },
+    {
+        "vinculo": "cargar_jugador",
+        "titulo": "Cargar Jugador",
+        "inMenu": false,
+        "ser_administrador": true
+    },
+    {
+        "vinculo": "editar_jugador",
+        "titulo": "Editar Jugador",
+        "inMenu": false,
+        "ser_administrador": true
+    },
+    {
+        "vinculo": "borrar_jugador",
+        "titulo": "Borrar Jugador",
+        "inMenu": false,
+        "ser_administrador": true
+    },
+    {
+        "vinculo": "panel_administrador",
+        "titulo": "Panel de Administrador",
+        "inMenu": false,
+        "ser_administrador": true
+    },
+    {
+        "vinculo": "detalle",
+        "titulo": "Detalle",
+        "inMenu": false,
+        "ser_administrador": false
+    },
+    {
+        "vinculo": "login",
+        "titulo": "Iniciar sesión",
+        "inMenu": false,
+        "ser_administrador": false
+    },
+    {
+        "vinculo": "carrito",
+        "titulo": "Carrito",
+        "inMenu": false,
+        "ser_administrador": false
+    },
+    {
+        "vinculo": "panel_paises",
+        "titulo": "Gestión de Países",
+        "inMenu": false,
+        "ser_administrador": true
+    },
+    {
+        "vinculo": "cargar_pais",
+        "titulo": "Cargar País",
+        "inMenu": false,
+        "ser_administrador": true
+    },
+    {
+        "vinculo": "editar_pais",
+        "titulo": "Editar País",
+        "inMenu": false,
+        "ser_administrador": true
+    },
+    {
+        "vinculo": "borrar_pais",
+        "titulo": "Borrar País",
+        "inMenu": false,
+        "ser_administrador": true
+    }
+]
