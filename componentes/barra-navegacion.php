@@ -4,8 +4,8 @@
         <ul class="filtros">
             <li><a href="?sec=inicio">Todos los jugadores</a></li>
             <?php foreach($paises as $p): ?>
-                <li>
-                    <a href="?sec=filtro&filtro=<?= urlencode($p); ?>"> <?= htmlspecialchars($p); ?></a>
+                <li  class=" <?= $p === $filtro ? "selected" : "unselected" ; ?>" >
+                    <a href="?sec=filtro&filtro=<?= urlencode($p); ?>" > <?= htmlspecialchars($p); ?></a>
                 </li>
                 <?php endforeach;?>
         </ul>

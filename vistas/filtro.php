@@ -18,9 +18,9 @@
     <?php require __DIR__ . "/../componentes/barra-navegacion.php"; ?>
 
     <div id="jugadores"> 
-    <?php foreach($jugadoresFiltrados as $jugador){
-        require __DIR__ . "/../componentes/carta-jugador.php" ;   
-    ?>
-    <?php }; ?>
+        <?php foreach($jugadoresFiltrados as $jugador){
+            require __DIR__ . "/../componentes/carta-jugador.php" ;   
+        ?>
+        <?php }; ?>
     </div>
 </div>
