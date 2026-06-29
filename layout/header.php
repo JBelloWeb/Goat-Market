@@ -1,6 +1,9 @@
 <header>
     <nav>
-            <h1 href="?sec=inicio">Goat Market</h1>
+            <h1>
+                <img src="favicon.svg" alt="GOAT Market" class="header-logo">
+                <a href="?sec=inicio">Goat Market</a>
+            </h1>
 
             <ul>
                 <?php
