@@ -20,7 +20,7 @@
     $pais = Pais::get_x_id($id);
 
     if($pais){
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
 
         if($pais->getNombre() === 'global'){
             try{

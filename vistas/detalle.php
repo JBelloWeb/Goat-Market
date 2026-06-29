@@ -24,7 +24,7 @@
             <div>
                 <p><?= htmlspecialchars($jugador->getDescripcion()) ?></p>
                 <div>
-                    <span><?= htmlspecialchars($jugador->getPais()) ?> <?= str_repeat('★', $jugador->getPaisEstrellas()) . str_repeat('☆', 5 - $jugador->getPaisEstrellas()) ?></span>
+                    <span><?= htmlspecialchars($jugador->getPais()) ?> <?= str_repeat('★', $jugador->getPaisEstrellas()) ?></span>
                     <span><?= $jugador->getEdad() ?> años</span>
                     <?php if (!empty($posicionesJugador)): ?>
                         <?php foreach($posicionesJugador as $pos): ?>
@@ -34,7 +34,7 @@
                         </div>
                 <div>
                     <strong>€<?= number_format($jugador->getPrecio() * 1000000, 0, ',', '.') ?></strong>
-                    <a href="actions/agregar_carrito_acc.php?id=<?= $jugador->getId() ?>" class="button">Agregar al carrito</a>
+                    <a href="actions/agregar_carrito_acc.php?id=<?= $jugador->getId() ?>" class="button">Al Carrito</a>
                         </div>
             </div>
         </div>

@@ -12,6 +12,7 @@ class Jugadores
   private $pais_nombre;
   private $pais_color;
   private $pais_estrellas;
+  private $cantidad;
 
   public function getId(){
     return $this -> id;
@@ -35,6 +36,10 @@ class Jugadores
 
   public function getImagen(){
     return $this -> imagen;
+  }
+
+  public function getCantidad(){
+    return $this -> cantidad ?? 1;
   }
   
   public function getPais(){
@@ -88,7 +93,7 @@ class Jugadores
   }
 
   public static function todosLosJugadores():array{
-    $conexion = (new Conexion()) -> getConexion();
+    $conexion = Conexion::getConexion();
 
     $query = "SELECT j.*, p.nombre AS pais_nombre, p.color AS pais_color, p.estrellas AS pais_estrellas FROM jugadores j JOIN paises p ON j.pais_id = p.id";
 
@@ -103,7 +108,7 @@ class Jugadores
 
   public static function todosLosPaises():array
   {
-    $conexion = (new Conexion()) -> getConexion();
+    $conexion = Conexion::getConexion();
     $query = "SELECT nombre FROM paises ORDER BY nombre";
     $PDOStatement = $conexion -> prepare($query);
     $PDOStatement -> execute();
@@ -112,7 +117,7 @@ class Jugadores
 
   public static function jugadores_x_pais(string $pais):array
   {
-    $conexion = (new Conexion()) -> getConexion();
+    $conexion = Conexion::getConexion();
     $query = "SELECT j.*, p.nombre AS pais_nombre, p.color AS pais_color, p.estrellas AS pais_estrellas FROM jugadores j
               JOIN paises p ON j.pais_id = p.id
               WHERE p.nombre = :pais";
@@ -134,7 +139,7 @@ class Jugadores
   }
 
   public static function insert(string $nombre, string $descripcion, float $precio, string $fecha_nacimiento, string $imagen, int $pais_id){
-    $conexion = (new Conexion()) -> getConexion();
+    $conexion = Conexion::getConexion();
     $query = "INSERT INTO jugadores (`nombre_apellido`, `descripcion`, `precio`, `fecha_nacimiento`, `imagen`, `pais_id`) VALUES (:nombre, :descripcion, :precio, :fecha_nacimiento, :imagen, :pais_id)";
 
     $PDOStatement = $conexion -> prepare($query);
@@ -152,7 +157,7 @@ class Jugadores
 
   public static function get_x_id(int $id): ?Jugadores
   {
-    $conexion = (new Conexion()) -> getConexion();
+    $conexion = Conexion::getConexion();
 
     $query = "SELECT j.*, p.nombre AS pais_nombre, p.color AS pais_color, p.estrellas AS pais_estrellas FROM jugadores j JOIN paises p ON j.pais_id = p.id WHERE j.id = :id LIMIT 1";
 
@@ -167,7 +172,7 @@ class Jugadores
 
   public function edit($nombre, $descripcion, $precio, $fecha_nacimiento, $imagen, $pais_id)
   {
-    $conexion = (new Conexion()) -> getConexion();
+    $conexion = Conexion::getConexion();
     $query = "UPDATE jugadores SET nombre_apellido = :nombre, descripcion = :descripcion, precio = :precio, fecha_nacimiento = :fecha_nacimiento, imagen = :imagen, pais_id = :pais_id 
     WHERE id = :id_jugador";
 
@@ -185,7 +190,7 @@ class Jugadores
 
   public function delete()
   {
-    $conexion = (new Conexion()) -> getConexion();
+    $conexion = Conexion::getConexion();
     $query = "DELETE FROM jugadores WHERE id = :id";
     $PDOStatement = $conexion -> prepare($query);
     $PDOStatement -> execute([

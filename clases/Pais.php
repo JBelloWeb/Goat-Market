@@ -42,7 +42,7 @@ class Pais
 
   public static function get_x_id(int $id): ?Pais
   {
-    $conexion = (new Conexion()) -> getConexion();
+    $conexion = Conexion::getConexion();
 
     $query = "SELECT * FROM paises WHERE id = :id LIMIT 1";
 
@@ -57,7 +57,7 @@ class Pais
 
   public static function todos():array
   {
-    $conexion = (new Conexion()) -> getConexion();
+    $conexion = Conexion::getConexion();
 
     $query = "SELECT * FROM paises ORDER BY nombre ASC";
 
@@ -69,7 +69,7 @@ class Pais
   }
 
   public static function insert(string $nombre, int $estrellas, string $color){
-    $conexion = (new Conexion()) -> getConexion();
+    $conexion = Conexion::getConexion();
 
     $query = "INSERT INTO paises (`nombre`, `estrellas`, `color`) VALUES (:nombre, :estrellas, :color)";
 
@@ -82,7 +82,7 @@ class Pais
   }
 
   public function edit(string $nombre, int $estrellas, string $color){
-    $conexion = (new Conexion()) -> getConexion();
+    $conexion = Conexion::getConexion();
 
     $query = "UPDATE paises SET nombre = :nombre, estrellas = :estrellas, color = :color WHERE id = :id";
 
@@ -96,7 +96,7 @@ class Pais
   }
 
   public function delete(){
-    $conexion = (new Conexion()) -> getConexion();
+    $conexion = Conexion::getConexion();
 
     $query = "DELETE FROM paises WHERE id = :id";
 

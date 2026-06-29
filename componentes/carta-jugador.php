@@ -14,7 +14,7 @@
         <?php endif; ?>
         <figcaption>
             <a href="?sec=detalle&id=<?= $jugador -> getId(); ?>" class="button">Detalle</a>
-            <a href="actions/agregar_carrito_acc.php?id=<?= $jugador->getId() ?>" class="button">Agregar al carrito</a>
+            <a href="actions/agregar_carrito_acc.php?id=<?= $jugador->getId() ?>" class="button">Al Carrito</a>
         </figcaption>
     </figure>
     <div class="content">

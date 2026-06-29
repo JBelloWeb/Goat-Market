@@ -12,11 +12,19 @@
 
     $total = 0;
     foreach($jugadores as $j){
-        $total += $j->getPrecio();
+        $total += $j->getPrecio() * $j->getCantidad();
     }
 ?>
 
 <h2>Mi Carrito</h2>
+
+<?php if(isset($_GET['error']) && $_GET['error'] === 'duplicado'): ?>
+    <div class="borrar-card">
+        <div class="detalles">
+            <p class="confirm-text" style="color: #e74c3c;">Este jugador ya está en tu carrito.</p>
+        </div>
+    </div>
+<?php endif; ?>
 
 <?php if(empty($jugadores)): ?>
     <div class="borrar-card">

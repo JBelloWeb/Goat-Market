@@ -9,23 +9,19 @@ class Conexion
 
     private const DB_DSN = "mysql:host=" . self::DB_SERVER . ";dbname=" . self::DB_NAME . ";charset=" . self::DB_CHARSET;
 
-    private PDO $db;
+    private static ?PDO $db = null;
 
-    public function __construct()
+    public static function getConexion(): PDO
     {
-        try
-        {
-            $this -> db = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS);
-            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (Exception $e)
-        {
-            die('Error al conectar con MySQL.');
+        if (self::$db === null) {
+            try {
+                self::$db = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS);
+                self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (Exception $e) {
+                die('Error al conectar con MySQL.');
+            }
         }
-    }
-
-    public function getConexion():PDO
-    {
-        return $this -> db; 
+        return self::$db;
     }
 }
 ?>

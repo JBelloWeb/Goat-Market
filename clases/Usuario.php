@@ -38,7 +38,7 @@ class Usuario
 
   public static function get_x_id(int $id): ?Usuario
   {
-    $conexion = (new Conexion()) -> getConexion();
+    $conexion = Conexion::getConexion();
 
     $query = "SELECT * FROM usuarios WHERE id = :id LIMIT 1";
 
@@ -53,7 +53,7 @@ class Usuario
 
   public static function login(string $nombre, string $contraseña): ?Usuario
   {
-    $conexion = (new Conexion()) -> getConexion();
+    $conexion = Conexion::getConexion();
 
     $query = "SELECT * FROM usuarios WHERE nombre = :nombre LIMIT 1";
 
@@ -71,7 +71,7 @@ class Usuario
   }
 
   public static function insert(string $nombre, string $contraseña, int $es_administrador){
-    $conexion = (new Conexion()) -> getConexion();
+    $conexion = Conexion::getConexion();
 
     $hash = password_hash($contraseña, PASSWORD_DEFAULT);
 

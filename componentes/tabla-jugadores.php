@@ -4,6 +4,9 @@
             <th>Imagen</th>
             <th>Nombre</th>
             <th>Precio</th>
+            <?php if($tipo_acciones === 'carrito'): ?>
+                <th>Cantidad</th>
+            <?php endif; ?>
             <?php if($mostrar_acciones): ?>
                 <th>Acciones</th>
             <?php endif; ?>
@@ -21,6 +24,9 @@
                 </td>
                 <td><?= htmlspecialchars($jugador->getNombre()) ?></td>
                 <td>€<?= number_format($jugador->getPrecio() * 1000000, 0, ',', '.') ?></td>
+                <?php if($tipo_acciones === 'carrito'): ?>
+                    <td><?= $jugador->getCantidad() ?></td>
+                <?php endif; ?>
                 <?php if($mostrar_acciones): ?>
                     <td>
                         <?php if($tipo_acciones === 'carrito'): ?>

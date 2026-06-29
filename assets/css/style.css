@@ -302,13 +302,35 @@ img{
 
 figcaption{
     transform: translateY(0px);
-    height: 50px;
+    height: 56px;
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    padding: 10px;
-    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 12px;
+    gap: 8px;
     transition: all cubic-bezier(0.63, 0.23, 0.00, 1.08) 1.25s;
+}
+
+.card figcaption .button {
+    flex: 1;
+    height: 100%;
+    padding: 6px 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #9A7A3B 0%, #E6D3A1 100%);
+    color: #1e1e1e;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.card figcaption .button:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
 }
 
 .tabla {
@@ -530,6 +552,18 @@ figcaption{
     font-size: 1.5rem;
 }
 
+.detalle .button {
+    width: auto;
+    max-width: none;
+    height: auto;
+    padding: 10px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+}
+
 /* ===== Alumno ===== */
 .alumno {
     display: flex;
@@ -543,13 +577,16 @@ figcaption{
 }
 
 .alumno figure {
-    flex: 0 0 250px;
+    flex: 0 0 200px;
     margin: 0;
+    align-self: flex-start;
 }
 
 .alumno figure img {
-    width: 100%;
-    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .alumno > div {

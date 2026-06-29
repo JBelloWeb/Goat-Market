@@ -5,7 +5,7 @@ class Posiciones
 {
     public static function todas(): array
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT posicion FROM posiciones WHERE posicion != 'global' ORDER BY posicion";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->execute();
@@ -14,7 +14,7 @@ class Posiciones
 
     public static function jugadores_x_posicion(string $posicion): array
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT DISTINCT j.*, p.nombre AS pais_nombre, p.color AS pais_color FROM jugadores j
                   JOIN paises p ON j.pais_id = p.id
                   JOIN posicion_x_jugador pxj ON j.id = pxj.jugador_id
@@ -28,7 +28,7 @@ class Posiciones
 
     public static function getPosicionesPorJugador(int $jugador_id): array
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT pos.posicion FROM posicion_x_jugador pxj
                   JOIN posiciones pos ON pxj.posicion_id = pos.id
                   WHERE pxj.jugador_id = :jugador_id
@@ -40,7 +40,7 @@ class Posiciones
 
     public static function todasConId(): array
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT id, posicion FROM posiciones WHERE posicion != 'global' ORDER BY posicion";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->execute();
@@ -49,7 +49,7 @@ class Posiciones
 
     public static function guardarPosicionesJugador(int $jugador_id, array $posiciones_ids): void
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
 
         $query = "DELETE FROM posicion_x_jugador WHERE jugador_id = :jugador_id";
         $PDOStatement = $conexion->prepare($query);
