@@ -10,16 +10,28 @@
 
 <h2>Panel de Administrador</h2>
 
-<div>
-    <h3>Gestión de Jugadores</h3>
-    <a href="?sec=cargar_jugador">Cargar nuevo jugador</a>
-    <?php require __DIR__ . "/../componentes/tabla-jugadores.php"; ?>
-</div>
+<div class="tab-panel">
+    <input type="radio" name="admin-tab" id="tab-jugadores" checked hidden>
+    <input type="radio" name="admin-tab" id="tab-paises" hidden>
 
-<hr>
+    <nav class="tab-nav">
+        <label for="tab-jugadores">Jugadores</label>
+        <label for="tab-paises">Países</label>
+    </nav>
 
-<div>
-    <h3>Gestión de Países</h3>
-    <a href="?sec=cargar_pais">Cargar nuevo país</a>
-    <?php require __DIR__ . "/../componentes/tabla-paises.php"; ?>
+    <div class="tab-pane" id="pane-jugadores">
+        <div class="tab-header">
+            <h3>Gestión de Jugadores</h3>
+            <a href="?sec=cargar_jugador">+ Nuevo jugador</a>
+        </div>
+        <?php require __DIR__ . "/../componentes/tabla-jugadores.php"; ?>
+    </div>
+
+    <div class="tab-pane" id="pane-paises">
+        <div class="tab-header">
+            <h3>Gestión de Países</h3>
+            <a href="?sec=cargar_pais">+ Nuevo país</a>
+        </div>
+        <?php require __DIR__ . "/../componentes/tabla-paises.php"; ?>
+    </div>
 </div>

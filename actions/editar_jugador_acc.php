@@ -1,67 +1,93 @@
 <?php
+    session_start();
     require_once "../clases/Conexion.php";
     require_once "../clases/Jugadores.php";
+    require_once "../clases/Posiciones.php";
+    require_once "../clases/Usuario.php";
 
-    $datos = $_POST;
-    var_dump($datos);
+    if(!isset($_SESSION['usuario_id'])){
+        header('Location: ../?sec=login');
+        exit;
+    }
 
-    $datosArchivo = $_FILES['foto'];
+    $usuario = Usuario::get_x_id($_SESSION['usuario_id']);
+    if(!$usuario || $usuario->getEsAdministrador() <= 0){
+        header('Location: ../?sec=login');
+        exit;
+    }
+
+    $id = isset($_POST['id']) ? (int) $_POST['id'] : 0;
+    $nombre = isset($_POST['nombre']) ? trim($_POST['nombre']) : '';
+    $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
+    $precio = isset($_POST['precio']) ? (float) $_POST['precio'] : 0;
+    $fecha_nacimiento = isset($_POST['fecha_nacimiento']) ? $_POST['fecha_nacimiento'] : '';
+    $pais_id = isset($_POST['pais_id']) ? (int) $_POST['pais_id'] : 0;
+    $posiciones = isset($_POST['posiciones']) ? $_POST['posiciones'] : [];
+
+    if($nombre === ''){
+        die("El nombre del jugador es obligatorio.");
+    }
+
+    if($precio <= 0){
+        die("El precio debe ser mayor a cero.");
+    }
+
+    if($pais_id <= 0){
+        die("Debe seleccionar un país válido.");
+    }
+
+    if($fecha_nacimiento === ''){
+        die("La fecha de nacimiento es obligatoria.");
+    }
+
     $archivoSubido = false;
 
-    if(!empty($datosArchivo['name'])){
-        $nombreOriginal = (explode(".", $datosArchivo['name']));
-        $extension = end($nombreOriginal);
-        $nombreNuevo = time() . rand(01,99) . ".$extension";
-        $archivoSubido = move_uploaded_file($datosArchivo['tmp_name'], "../assets/img/l/$nombreNuevo");
-    }
+    if(!empty($_FILES['foto']['name'])){
+        $datosArchivo = $_FILES['foto'];
 
-    $jugador = Jugadores::get_x_id($datos['id']);
-    $imagenAnterior = $jugador -> getImagen();
-    
-    if($archivoSubido){
-        try{
-            $jugador->edit(
-                $datos["nombre"],
-                $datos["descripcion"],
-                (float) $datos["precio"],
-                $datos["fecha_nacimiento"],
-                $nombreNuevo,
-                $datos["pais"]
-            );
-        } catch (Exception $e){
-            die("<p>No se pudo editar el producto</p>");
+        if($datosArchivo['error'] !== UPLOAD_ERR_OK){
+            die("Error al subir el archivo.");
         }
 
-        if(!empty($imagenAnterior)){
-            $archivo = "../assets/img/l/" . $imagenAnterior;
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+        if(!in_array($datosArchivo['type'], $allowedTypes)){
+            die("Solo se permiten imágenes (JPEG, PNG, WebP, GIF).");
+        }
 
-            if(file_exists($archivo)){
+        $maxSize = 2 * 1024 * 1024;
+        if($datosArchivo['size'] > $maxSize){
+            die("La imagen no puede superar los 2MB.");
+        }
 
-                $fileDelete = unlink($archivo);
-                
-                if(!$fileDelete){
-                    throw new Exception("No se pudo eliminar la imagen");
+        $nombreOriginal = explode(".", $datosArchivo['name']);
+        $extension = end($nombreOriginal);
+        $nombreNuevo = time() . rand(1, 99) . ".$extension";
+        $archivoSubido = move_uploaded_file($datosArchivo['tmp_name'], "../assets/img/$nombreNuevo");
+    }
+
+    $jugador = Jugadores::get_x_id($id);
+
+    if($jugador){
+        try{
+            if($archivoSubido){
+                $imagenAnterior = $jugador->getImagen();
+                $jugador->edit($nombre, $descripcion, $precio, $fecha_nacimiento, $nombreNuevo, $pais_id);
+
+                if(!empty($imagenAnterior)){
+                    $archivo = "../assets/img/" . $imagenAnterior;
+                    if(file_exists($archivo)){
+                        unlink($archivo);
+                    }
                 }
             } else {
-                throw new Exception("No existe el archivo");
+                $jugador->edit($nombre, $descripcion, $precio, $fecha_nacimiento, $jugador->getImagen(), $pais_id);
             }
-        }
 
-        header('Location: ../index.php?sec=inicio');
-
-    } else {
-        try{
-            $jugador->edit(
-                $datos["nombre"],
-                $datos["descripcion"],
-                (float) $datos["precio"],
-                $datos["fecha_nacimiento"],
-                $imagenAnterior,
-                $datos["pais"]
-            );
+            Posiciones::guardarPosicionesJugador($id, $posiciones);
         } catch (Exception $e){
-            die("<p>No se pudo editar el producto</p>");
+            die("No se pudo editar el jugador");
         }
     }
-    header('Location: ../index.php?sec=inicio');
-?>
+
+    header('Location: ../?sec=panel_administrador');
+    exit;

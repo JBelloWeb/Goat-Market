@@ -19,8 +19,14 @@
 <h2>Mi Carrito</h2>
 
 <?php if(empty($jugadores)): ?>
-    <p>El carrito está vacío.</p>
-    <a href="?sec=inicio">Ver jugadores</a>
+    <div class="borrar-card">
+        <div class="detalles">
+            <p class="confirm-text">El carrito está vacío.</p>
+        </div>
+        <div class="acciones">
+            <a class="btn-cancelar" href="?sec=inicio">Ver jugadores</a>
+        </div>
+    </div>
 <?php else: ?>
     <?php require __DIR__ . "/../componentes/tabla-jugadores.php"; ?>
     <p><strong>Total: €<?= number_format($total * 1000000, 0, ',', '.') ?></strong></p>

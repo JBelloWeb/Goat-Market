@@ -2,19 +2,20 @@
     require_once __DIR__ . "/../clases/Jugadores.php";
     require_once __DIR__ . "/../clases/Posiciones.php";
     $filtro = isset($_GET['filtro']) ? $_GET['filtro'] : '';
-    $paises = Jugadores::todosLosPaises();
     $posiciones = Posiciones::todas();
-    $filtro_posicion = '';
+    $paises = Jugadores::todosLosPaises();
 
-    if (empty($filtro) || !in_array($filtro, $paises)) {
+    if (empty($filtro) || !in_array($filtro, $posiciones)) {
         header('Location: ?sec=404');
         exit;
     }
 
-    $jugadoresFiltrados = Jugadores::jugadores_x_pais($filtro);
+    $jugadoresFiltrados = Posiciones::jugadores_x_posicion($filtro);
+    $filtro_posicion = $filtro;
+    $filtro = '';
 ?>
 
-<h1>Categoría: <?= htmlspecialchars($filtro); ?></h1>
+<h1>Posición: <?= htmlspecialchars($filtro_posicion); ?></h1>
 
 <div id="catalogo">
 

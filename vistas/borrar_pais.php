@@ -7,18 +7,37 @@
 ?>
 
 <?php if($pais): ?>
-    <h2>Borrar País</h2>
 
-    <div>
-        <p>¿Estás seguro de que deseas eliminar el país <strong><?= htmlspecialchars($pais->getNombre()) ?></strong>?</p>
-        <p>Estrellas: <?= $pais->getEstrellas() ?></p>
-        <p>Color: <span style="display:inline-block;width:20px;height:20px;background:<?= htmlspecialchars($pais->getColor()) ?>;border:1px solid #fff;vertical-align:middle;"></span> <?= htmlspecialchars($pais->getColor()) ?></p>
+<h2>Borrar País</h2>
+
+<div class="borrar-card">
+    <div class="detalles">
+        <div class="detalle-row">
+            <span class="label">ID</span>
+            <span class="valor"><?= $pais->getId() ?></span>
+        </div>
+        <div class="detalle-row">
+            <span class="label">Nombre</span>
+            <span class="valor"><?= htmlspecialchars($pais->getNombre()) ?></span>
+        </div>
+        <div class="detalle-row">
+            <span class="label">Estrellas</span>
+            <span class="valor"><?= $pais->getEstrellas() ?></span>
+        </div>
+        <div class="detalle-row">
+            <span class="label">Color</span>
+            <span class="valor"><span class="swatch" style="background:<?= htmlspecialchars($pais->getColor()) ?>"></span> <?= htmlspecialchars($pais->getColor()) ?></span>
+        </div>
     </div>
 
-    <div>
-        <a href="actions/borrar_pais_acc.php?id=<?= $pais->getId() ?>">Eliminar</a>
-        <a href="?sec=panel_paises">Cancelar</a>
+    <p class="confirm-text">¿Estás seguro de que deseas eliminar este país?</p>
+
+    <div class="acciones">
+        <a class="btn-peligro" href="actions/borrar_pais_acc.php?id=<?= $pais->getId() ?>">Eliminar</a>
+        <a class="btn-cancelar" href="?sec=panel_paises">Cancelar</a>
     </div>
+</div>
+
 <?php else: ?>
     <div>
         <h3>No se encontró el país</h3>

@@ -1,17 +1,21 @@
 <h2>Iniciar sesión</h2>
 
 <?php if(isset($_GET['error'])): ?>
-    <p style="color:red;">Usuario o contraseña incorrectos.</p>
+    <p class="error-msg">Usuario o contraseña incorrectos.</p>
 <?php endif; ?>
 
-<form action="actions/login_acc.php" method="post">
-    <div>
+<form id="loginForm" action="actions/login_acc.php" method="post">
+    <div class="form-item">
         <label for="nombre">Usuario</label>
         <input type="text" id="nombre" name="nombre" required>
     </div>
-    <div>
+    <div class="form-item">
         <label for="contraseña">Contraseña</label>
         <input type="password" id="contraseña" name="contraseña" required>
     </div>
-    <input type="submit" value="Ingresar">
+    <input class="button btn-submit" type="submit" value="Ingresar">
 </form>
+
+<div class="acciones" style="justify-content: center; margin-top: 1rem;">
+    <a class="btn-cancelar" href="?sec=inicio">Volver al inicio</a>
+</div>

@@ -11,6 +11,7 @@ class Jugadores
   private $pais_id;
   private $pais_nombre;
   private $pais_color;
+  private $pais_estrellas;
 
   public function getId(){
     return $this -> id;
@@ -40,8 +41,16 @@ class Jugadores
     return $this -> pais_nombre ?? $this -> pais_id;
   }
 
+  public function getPaisId(){
+    return $this -> pais_id;
+  }
+
   public function getPaisColor(){
     return $this -> pais_color;
+  }
+
+  public function getPaisEstrellas(){
+    return $this -> pais_estrellas;
   }
 
   public function getEdad(): int {
@@ -81,7 +90,7 @@ class Jugadores
   public static function todosLosJugadores():array{
     $conexion = (new Conexion()) -> getConexion();
 
-    $query = "SELECT j.*, p.nombre AS pais_nombre, p.color AS pais_color FROM jugadores j JOIN paises p ON j.pais_id = p.id";
+    $query = "SELECT j.*, p.nombre AS pais_nombre, p.color AS pais_color, p.estrellas AS pais_estrellas FROM jugadores j JOIN paises p ON j.pais_id = p.id";
 
     $PDOStatement = $conexion -> prepare($query);
     $PDOStatement -> setFetchMode(PDO::FETCH_CLASS, self::class);
@@ -104,7 +113,7 @@ class Jugadores
   public static function jugadores_x_pais(string $pais):array
   {
     $conexion = (new Conexion()) -> getConexion();
-    $query = "SELECT j.*, p.nombre AS pais_nombre, p.color AS pais_color FROM jugadores j
+    $query = "SELECT j.*, p.nombre AS pais_nombre, p.color AS pais_color, p.estrellas AS pais_estrellas FROM jugadores j
               JOIN paises p ON j.pais_id = p.id
               WHERE p.nombre = :pais";
     $PDOStatement = $conexion -> prepare($query);
@@ -124,9 +133,9 @@ class Jugadores
     return $jugadores;
   }
 
-  public static function insert(string $nombre, string $descripcion, float $precio, string $fecha_nacimiento, string $imagen, string $pais){
+  public static function insert(string $nombre, string $descripcion, float $precio, string $fecha_nacimiento, string $imagen, int $pais_id){
     $conexion = (new Conexion()) -> getConexion();
-    $query = "INSERT INTO jugadores (`nombre`, `descripcion`, `precio`, `fecha_nacimiento`, `imagen`, `pais`) VALUES (:nombre, :descripcion, :precio, :fecha_nacimiento, :imagen, :pais)";
+    $query = "INSERT INTO jugadores (`nombre_apellido`, `descripcion`, `precio`, `fecha_nacimiento`, `imagen`, `pais_id`) VALUES (:nombre, :descripcion, :precio, :fecha_nacimiento, :imagen, :pais_id)";
 
     $PDOStatement = $conexion -> prepare($query);
     $PDOStatement -> execute([
@@ -135,15 +144,17 @@ class Jugadores
       'precio' => $precio,
       'fecha_nacimiento' => $fecha_nacimiento,
       'imagen' => $imagen,
-      'pais' => $pais
+      'pais_id' => $pais_id
     ]);
+
+    return $conexion->lastInsertId();
   }
 
   public static function get_x_id(int $id): ?Jugadores
   {
     $conexion = (new Conexion()) -> getConexion();
 
-    $query = "SELECT j.*, p.nombre AS pais_nombre, p.color AS pais_color FROM jugadores j JOIN paises p ON j.pais_id = p.id WHERE j.id = :id LIMIT 1";
+    $query = "SELECT j.*, p.nombre AS pais_nombre, p.color AS pais_color, p.estrellas AS pais_estrellas FROM jugadores j JOIN paises p ON j.pais_id = p.id WHERE j.id = :id LIMIT 1";
 
     $PDOStatement = $conexion -> prepare($query);
     $PDOStatement -> setFetchMode(PDO::FETCH_CLASS, self::class);
@@ -154,10 +165,10 @@ class Jugadores
     return !empty($lista) ? $lista : null;
   }
 
-  public function edit($nombre, $descripcion, $precio, $fecha_nacimiento, $imagen, $pais)
+  public function edit($nombre, $descripcion, $precio, $fecha_nacimiento, $imagen, $pais_id)
   {
     $conexion = (new Conexion()) -> getConexion();
-    $query = "UPDATE jugadores SET nombre = :nombre, descripcion = :descripcion, precio = :precio, fecha_nacimiento = :fecha_nacimiento, imagen = :imagen, pais = :pais 
+    $query = "UPDATE jugadores SET nombre_apellido = :nombre, descripcion = :descripcion, precio = :precio, fecha_nacimiento = :fecha_nacimiento, imagen = :imagen, pais_id = :pais_id 
     WHERE id = :id_jugador";
 
     $PDOStatement = $conexion -> prepare($query);
@@ -167,7 +178,7 @@ class Jugadores
       "precio" => $precio,
       "fecha_nacimiento" => $fecha_nacimiento,
       "imagen" => $imagen,
-      "pais" => $pais,
+      "pais_id" => $pais_id,
       "id_jugador" => $this ->  id
     ]);
   }

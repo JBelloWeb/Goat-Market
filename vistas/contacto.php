@@ -1,12 +1,12 @@
-<h1>Contacto</h1>
+<h2>Contacto</h2>
 
-<div>
+<div class="contacto">
     <p>
         ¿Tenés alguna consulta sobre un jugador, su precio o simplemente querés hacernos una sugerencia?
         Completá el formulario y te respondemos a la brevedad.
     </p>
 
-    <form action="?sec=enviado" method="GET">
+    <form action="?sec=enviado" method="POST">
 
         <div>
             <label for="nombre">Nombre</label>
@@ -36,9 +36,7 @@
 
         <input type="hidden" name="sec" value="enviado">
 
-        <div>
-            <button type="submit">Enviar mensaje</button>
-        </div>
+        <button type="submit" class="button">Enviar mensaje</button>
 
     </form>
 </div>

@@ -100,5 +100,17 @@
         "titulo": "Borrar País",
         "inMenu": false,
         "ser_administrador": true
+    },
+    {
+        "vinculo": "filtro_posicion",
+        "titulo": "Filtro por Posición",
+        "inMenu": false,
+        "ser_administrador": false
+    },
+    {
+        "vinculo": "enviado",
+        "titulo": "Mensaje enviado",
+        "inMenu": false,
+        "ser_administrador": false
     }
 ]

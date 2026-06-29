@@ -1,4 +1,4 @@
-<table>
+<table class="tabla">
     <thead>
         <tr>
             <th>ID</th>
@@ -14,7 +14,7 @@
                 <td><?= $pais->getId() ?></td>
                 <td><?= htmlspecialchars($pais->getNombre()) ?></td>
                 <td><?= $pais->getEstrellas() ?></td>
-                <td><span style="display:inline-block;width:20px;height:20px;background:<?= htmlspecialchars($pais->getColor()) ?>;border:1px solid #fff;vertical-align:middle;"></span> <?= htmlspecialchars($pais->getColor()) ?></td>
+                <td><span class="swatch" style="background:<?= htmlspecialchars($pais->getColor()) ?>"></span> <?= htmlspecialchars($pais->getColor()) ?></td>
                 <td>
                     <a href="?sec=editar_pais&id=<?= $pais->getId() ?>">Editar</a>
                     <a href="?sec=borrar_pais&id=<?= $pais->getId() ?>">Borrar</a>

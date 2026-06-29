@@ -1,4 +1,4 @@
-<table>
+<table class="tabla">
     <thead>
         <tr>
             <th>Imagen</th>
@@ -14,11 +14,9 @@
             <tr>
                 <td>
                     <?php if($jugador->getImagen()): ?>
-                        <picture>
-                            <source srcset="assets/img/s/<?= $jugador->getImagen() ?>" media="(max-width: 480px)">
-                            <source srcset="assets/img/m/<?= $jugador->getImagen() ?>" media="(max-width: 768px)">
-                            <img src="assets/img/l/<?= $jugador->getImagen() ?>" alt="<?= $jugador->getNombre() ?>" width="50">
-                        </picture>
+                        <figure>
+                            <img src="assets/img/<?= rawurlencode($jugador->getImagen()) ?>" alt="<?= htmlspecialchars($jugador->getNombre()) ?>" width="50">
+                        </figure>
                     <?php endif; ?>
                 </td>
                 <td><?= htmlspecialchars($jugador->getNombre()) ?></td>
