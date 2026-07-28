@@ -22,7 +22,7 @@
     <div class="tab-pane" id="pane-jugadores">
         <div class="tab-header">
             <h3>Gestión de Jugadores</h3>
-            <a href="?sec=cargar_jugador">+ Nuevo jugador</a>
+            <a class="button" href="?sec=cargar_jugador">+ Nuevo jugador</a>
         </div>
         <?php require __DIR__ . "/../componentes/tabla-jugadores.php"; ?>
     </div>
@@ -30,7 +30,7 @@
     <div class="tab-pane" id="pane-paises">
         <div class="tab-header">
             <h3>Gestión de Países</h3>
-            <a href="?sec=cargar_pais">+ Nuevo país</a>
+            <a class="button" href="?sec=cargar_pais">+ Nuevo país</a>
         </div>
         <?php require __DIR__ . "/../componentes/tabla-paises.php"; ?>
     </div>

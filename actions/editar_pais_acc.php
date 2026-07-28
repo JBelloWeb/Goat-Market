@@ -38,5 +38,5 @@
         }
     }
 
-    header('Location: ../?sec=panel_paises');
+    header('Location: ../?sec=panel_administrador');
     exit;

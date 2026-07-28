@@ -14,7 +14,11 @@
         <?php endif; ?>
         <figcaption>
             <a href="?sec=detalle&id=<?= $jugador -> getId(); ?>" class="button">Detalle</a>
-            <a href="actions/agregar_carrito_acc.php?id=<?= $jugador->getId() ?>" class="button">Al Carrito</a>
+            <?php if (in_array($jugador->getId(), $ids_en_carrito ?? [])): ?>
+                <span class="button disabled">En carrito</span>
+            <?php else: ?>
+                <a href="actions/agregar_carrito_acc.php?id=<?= $jugador->getId() ?>" class="button">Al Carrito</a>
+            <?php endif; ?>
         </figcaption>
     </figure>
     <div class="content">

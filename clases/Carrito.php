@@ -15,7 +15,7 @@ class Carrito
       return false;
     }
 
-    $query = "INSERT INTO carrito (`usuario_id`, `jugador_id`, `cantidad`) VALUES (:usuario_id, :jugador_id, 1)";
+    $query = "INSERT INTO carrito (`usuario_id`, `jugador_id`) VALUES (:usuario_id, :jugador_id)";
 
     $PDOStatement = $conexion -> prepare($query);
     $PDOStatement -> execute([
@@ -42,7 +42,7 @@ class Carrito
   {
     $conexion = Conexion::getConexion();
 
-    $query = "SELECT j.*, c.cantidad, p.nombre AS pais_nombre
+    $query = "SELECT j.*, p.nombre AS pais_nombre
               FROM carrito c
               JOIN jugadores j ON c.jugador_id = j.id
               LEFT JOIN paises p ON j.pais_id = p.id
@@ -52,6 +52,15 @@ class Carrito
     $PDOStatement -> setFetchMode(PDO::FETCH_CLASS, 'Jugadores');
     $PDOStatement -> execute(['usuario_id' => $usuario_id]);
     return $PDOStatement -> fetchAll();
+  }
+
+  public static function idsEnCarrito(int $usuario_id): array
+  {
+    $conexion = Conexion::getConexion();
+    $query = "SELECT jugador_id FROM carrito WHERE usuario_id = :usuario_id";
+    $stmt = $conexion->prepare($query);
+    $stmt->execute(['usuario_id' => $usuario_id]);
+    return $stmt->fetchAll(PDO::FETCH_COLUMN);
   }
 
   public static function vaciar(int $usuario_id){

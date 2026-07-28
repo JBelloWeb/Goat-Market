@@ -26,11 +26,11 @@
         </div>
 
         <input type="submit" value="Guardar">
-        <a href="?sec=panel_paises">Cancelar</a>
+        <a href="?sec=panel_administrador">Cancelar</a>
     </form>
 <?php else: ?>
     <div>
         <h3>No se encontró el país</h3>
-        <a href="?sec=panel_paises">Volver</a>
+        <a href="?sec=panel_administrador">Volver</a>
     </div>
 <?php endif; ?>

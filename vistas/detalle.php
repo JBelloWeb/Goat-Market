@@ -1,6 +1,7 @@
 <?php
     require_once "clases/Jugadores.php";
     require_once "clases/Posiciones.php";
+    require_once "clases/Carrito.php";
     $id = isset($_GET["id"]) ? $_GET["id"] : null;
 
     if(is_null($id)){
@@ -12,6 +13,7 @@
 
     if(!is_null($jugador)){
         $posicionesJugador = Posiciones::getPosicionesPorJugador($jugador->getId());
+        $ya_en_carrito = isset($_SESSION['usuario_id']) && in_array($jugador->getId(), Carrito::idsEnCarrito($_SESSION['usuario_id']));
         ?>
         <h2>Detalles de <?= $jugador->getNombre() ?></h2>
 
@@ -34,7 +36,11 @@
                         </div>
                 <div>
                     <strong>€<?= number_format($jugador->getPrecio() * 1000000, 0, ',', '.') ?></strong>
-                    <a href="actions/agregar_carrito_acc.php?id=<?= $jugador->getId() ?>" class="button">Al Carrito</a>
+                    <?php if ($ya_en_carrito): ?>
+                        <span class="button disabled">Ya está en tu carrito</span>
+                    <?php else: ?>
+                        <a href="actions/agregar_carrito_acc.php?id=<?= $jugador->getId() ?>" class="button">Al Carrito</a>
+                    <?php endif; ?>
                         </div>
             </div>
         </div>

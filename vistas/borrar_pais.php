@@ -34,13 +34,13 @@
 
     <div class="acciones">
         <a class="btn-peligro" href="actions/borrar_pais_acc.php?id=<?= $pais->getId() ?>">Eliminar</a>
-        <a class="btn-cancelar" href="?sec=panel_paises">Cancelar</a>
+        <a class="btn-cancelar" href="?sec=panel_administrador">Cancelar</a>
     </div>
 </div>
 
 <?php else: ?>
     <div>
         <h3>No se encontró el país</h3>
-        <a href="?sec=panel_paises">Volver</a>
+        <a href="?sec=panel_administrador">Volver</a>
     </div>
 <?php endif; ?>

@@ -6,6 +6,6 @@
 
 <h2>Gestión de Países</h2>
 
-<a href="?sec=cargar_pais">Cargar nuevo país</a>
+<a class="button" href="?sec=cargar_pais">Cargar nuevo país</a>
 
 <?php require __DIR__ . "/../componentes/tabla-paises.php"; ?>

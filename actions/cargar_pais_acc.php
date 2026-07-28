@@ -33,5 +33,5 @@
         die("No se pudo cargar el país");
     }
 
-    header('Location: ../?sec=panel_paises');
+    header('Location: ../?sec=panel_administrador');
     exit;

@@ -15,5 +15,5 @@
     </div>
 
     <input type="submit" value="Guardar">
-    <a href="?sec=panel_paises">Cancelar</a>
+    <a href="?sec=panel_administrador">Cancelar</a>
 </form>

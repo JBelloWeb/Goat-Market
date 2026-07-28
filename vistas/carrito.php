@@ -26,6 +26,14 @@
     </div>
 <?php endif; ?>
 
+<?php if(isset($_GET['error']) && $_GET['error'] === 'vacio'): ?>
+    <div class="borrar-card">
+        <div class="detalles">
+            <p class="confirm-text" style="color: #e74c3c;">No hay productos en el carrito para finalizar la compra.</p>
+        </div>
+    </div>
+<?php endif; ?>
+
 <?php if(empty($jugadores)): ?>
     <div class="borrar-card">
         <div class="detalles">
@@ -37,5 +45,8 @@
     </div>
 <?php else: ?>
     <?php require __DIR__ . "/../componentes/tabla-jugadores.php"; ?>
-    <p><strong>Total: €<?= number_format($total * 1000000, 0, ',', '.') ?></strong></p>
+    <div class="carrito-footer">
+        <p><strong>Total: €<?= number_format($total * 1000000, 0, ',', '.') ?></strong></p>
+        <a href="actions/finalizar_compra_acc.php" class="button">Finalizar Compra</a>
+    </div>
 <?php endif; ?>

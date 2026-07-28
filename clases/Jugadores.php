@@ -12,7 +12,6 @@ class Jugadores
   private $pais_nombre;
   private $pais_color;
   private $pais_estrellas;
-  private $cantidad;
 
   public function getId(){
     return $this -> id;
@@ -38,9 +37,6 @@ class Jugadores
     return $this -> imagen;
   }
 
-  public function getCantidad(){
-    return $this -> cantidad ?? 1;
-  }
   
   public function getPais(){
     return $this -> pais_nombre ?? $this -> pais_id;

@@ -112,5 +112,23 @@
         "titulo": "Mensaje enviado",
         "inMenu": false,
         "ser_administrador": false
+    },
+    {
+        "vinculo": "compra-exitosa",
+        "titulo": "Compra realizada",
+        "inMenu": false,
+        "ser_administrador": false
+    },
+    {
+        "vinculo": "mis-compras",
+        "titulo": "Mis Compras",
+        "inMenu": false,
+        "ser_administrador": false
+    },
+    {
+        "vinculo": "editar-equipo",
+        "titulo": "Editar Equipo",
+        "inMenu": true,
+        "ser_administrador": false
     }
 ]
