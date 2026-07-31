@@ -13,9 +13,10 @@
                 <?php
                     foreach($secciones as $value){
                         if($value -> getInMenu()){
+                            $activo = $value -> getVinculo() === $seccion_solicitada ? 'active' : '';
                             ?> 
                                 <li>
-                                    <a href="?sec=<?= $value -> getVinculo(); ?>"><?= $value -> getTitulo(); ?></a>
+                                    <a href="?sec=<?= $value -> getVinculo(); ?>" class="<?= $activo; ?>"><?= $value -> getTitulo(); ?></a>
                                 </li>
                             <?php
                         }
@@ -25,14 +26,14 @@
 
             <ul>
                 <?php if($usuario): ?>
-                    <li><a href="?sec=carrito">Carrito</a></li>
-                    <li><a href="?sec=mis-compras">Mis Compras</a></li>
+                    <li><a href="?sec=carrito"<?= $seccion_solicitada === 'carrito' ? ' class="active"' : ''; ?>>Carrito</a></li>
+                    <li><a href="?sec=mis-compras"<?= $seccion_solicitada === 'mis-compras' ? ' class="active"' : ''; ?>>Mis Compras</a></li>
                     <?php if($usuario->getEsAdministrador() > 0): ?>
-                        <li><a href="?sec=panel_administrador">Panel Admin</a></li>
+                        <li><a href="?sec=panel_administrador"<?= $seccion_solicitada === 'panel_administrador' ? ' class="active"' : ''; ?>>Panel Admin</a></li>
                     <?php endif; ?>
-                    <li><a href="actions/logout_acc.php">Cerrar sesión</a></li>
+                    <li><a style="color: #d72638;" href="actions/logout_acc.php">Cerrar sesión</a></li>
                 <?php else: ?>
-                    <li><a href="?sec=login">Iniciar sesión</a></li>
+                    <li><a href="?sec=login"<?= $seccion_solicitada === 'login' ? ' class="active"' : ''; ?>>Iniciar sesión</a></li>
                 <?php endif; ?>
             </ul>
         </div>

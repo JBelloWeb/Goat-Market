@@ -105,7 +105,7 @@ class Jugadores
   public static function todosLosPaises():array
   {
     $conexion = Conexion::getConexion();
-    $query = "SELECT nombre FROM paises ORDER BY nombre";
+    $query = "SELECT nombre FROM paises WHERE nombre != 'global' ORDER BY nombre";
     $PDOStatement = $conexion -> prepare($query);
     $PDOStatement -> execute();
     return $PDOStatement -> fetchAll(PDO::FETCH_COLUMN);

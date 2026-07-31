@@ -30,7 +30,7 @@ $compras = Compra::getPorUsuario($_SESSION['usuario_id']);
             <th>Jugador</th>
             <th>Precio unitario</th>
             <th>Fecha</th>
-            <th>Subtotal</th>
+            <th>Detalle</th>
           </tr>
         </thead>
         <tbody>
@@ -46,7 +46,7 @@ $compras = Compra::getPorUsuario($_SESSION['usuario_id']);
               </td>
               <td>€<?= number_format($d['precio_unitario'] * 1000000, 0, ',', '.') ?></td>
               <td><?= date('d/m/Y H:i', strtotime($compra->getFecha())) ?></td>
-              <td>€<?= number_format($d['precio_unitario'] * 1000000, 0, ',', '.') ?></td>
+              <td><a href="?sec=detalle&id=<?= $d['jugador_id'] ?>">Ver detalle</a></td>
             </tr>
           <?php endforeach; ?>
         </tbody>

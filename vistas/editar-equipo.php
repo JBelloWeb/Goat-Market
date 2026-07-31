@@ -7,6 +7,8 @@ if (!isset($_SESSION['usuario_id'])) {
 require_once __DIR__ . "/../clases/Conexion.php";
 require_once __DIR__ . "/../clases/Equipo.php";
 
+$es_admin = $usuario && $usuario->getEsAdministrador() > 0;
+
 $conexion = Conexion::getConexion();
 
 $equipo = Equipo::getPorUsuario($_SESSION['usuario_id']);
@@ -196,7 +198,7 @@ $pitch_slots = [
                 <li class="modal-vacio">No hay jugadores disponibles</li>
             <?php else: ?>
                 <?php foreach ($jugadores as $j):
-                    $es_comprado = in_array($j['id'], $ids_comprados);
+                    $es_comprado = $es_admin || in_array($j['id'], $ids_comprados);
                 ?>
                 <li class="modal-jugador <?= $es_comprado ? 'comprado' : 'no-comprado' ?>"
                     data-player-id="<?= $j['id'] ?>"

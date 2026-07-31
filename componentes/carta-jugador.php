@@ -16,6 +16,8 @@
             <a href="?sec=detalle&id=<?= $jugador -> getId(); ?>" class="button">Detalle</a>
             <?php if (in_array($jugador->getId(), $ids_en_carrito ?? [])): ?>
                 <span class="button disabled">En carrito</span>
+            <?php elseif (in_array($jugador->getId(), $ids_comprados ?? [])): ?>
+                <span class="button disabled">Comprado</span>
             <?php else: ?>
                 <a href="actions/agregar_carrito_acc.php?id=<?= $jugador->getId() ?>" class="button">Al Carrito</a>
             <?php endif; ?>

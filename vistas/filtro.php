@@ -15,7 +15,6 @@
         $s->execute(['uid' => $_SESSION['usuario_id']]);
         $ids_comprados = $s->fetchAll(PDO::FETCH_COLUMN);
     }
-    $jugadoresFiltrados = array_filter($jugadoresFiltrados, fn($j) => !in_array($j->getId(), $ids_comprados));
 
     if (empty($filtro) || !in_array($filtro, $paises)) {
         header('Location: ?sec=404');
@@ -23,6 +22,7 @@
     }
 
     $jugadoresFiltrados = Jugadores::jugadores_x_pais($filtro);
+    $jugadoresFiltrados = array_filter($jugadoresFiltrados, fn($j) => !in_array($j->getId(), $ids_comprados));
 ?>
 
 <div id="catalogo">

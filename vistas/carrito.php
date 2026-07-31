@@ -12,7 +12,7 @@
 
     $total = 0;
     foreach($jugadores as $j){
-        $total += $j->getPrecio() * $j->getCantidad();
+        $total += $j->getPrecio();
     }
 ?>
 
@@ -46,7 +46,6 @@
 <?php else: ?>
     <?php require __DIR__ . "/../componentes/tabla-jugadores.php"; ?>
     <div class="carrito-footer">
-        <p><strong>Total: €<?= number_format($total * 1000000, 0, ',', '.') ?></strong></p>
-        <a href="actions/finalizar_compra_acc.php" class="button">Finalizar Compra</a>
+        <a href="actions/finalizar_compra_acc.php" class="button"><strong>Total: €<?= number_format($total * 1000000, 0, ',', '.') ?> <span>Finalizar Compra</span></strong></a>
     </div>
 <?php endif; ?>

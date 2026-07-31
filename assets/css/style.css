@@ -23,7 +23,6 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-
     p{
         margin: auto;
         text-align: center;
@@ -59,15 +58,20 @@ h2{
 
 main{
     margin: 5rem auto;
+    min-height: 80vh;
 }
 
 nav{
+    width: 99vw;
+    margin: 0.5rem auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #1e1e1e;
     color: #fefefe;
-    padding: 20px;
+    padding: 1.5rem;
+    border-radius: 50px;
+    box-shadow: 0px 2px 20px 0px #1e1e1e50;
 }
 
 nav h1 {
@@ -84,18 +88,21 @@ nav h1 {
 }
 
 
-nav a::after{
-    content: '';
-    display: flex;
-    width: 0%;
-    height: 2px;
-    background: var(--golden-x);
-    transition: all 0.3s;
+nav ul li a{
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
 }
 
-nav a:hover::after{
-    width: 100%;
+nav ul li a:hover{
+    color: var(--golden);   
 }
+
+nav ul li a.active{
+    background: var(--golden-x);
+    color: #1e1e1e;
+    font-weight: 600;
+}
+
 
 nav ul{
     justify-content: center;
@@ -109,6 +116,7 @@ nav ul{
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    border: 5px solid #1e1e1e;
 }
 
 .form-item{
@@ -228,7 +236,9 @@ nav ul{
 .card{
     margin: auto;
     height: var(--card-size);
-    width: 200px;
+    width: 15%;
+    min-width: 225px;
+    max-width: 240px;
     background: linear-gradient(150deg, var(--main-color) 0%, hsla(from var(--main-color) h calc(s - 30) calc(l - 25)) 100%);
     border-radius: 15px;
     display: flex;
@@ -355,8 +365,14 @@ figcaption{
     transform: translateY(-1px);
 }
 
-.tabla {
+#pane-jugadores .tabla, #pane-paises .tabla{
     width: 90%;
+    max-width: none;
+} 
+
+.tabla {
+    width: 80%;
+    max-width: 750px;
     outline: 3px solid #1e1e1e;
     border-collapse: collapse;
     margin: 1.5rem auto;
@@ -459,7 +475,7 @@ figcaption{
     padding: 0.75rem 2rem;
     cursor: pointer;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     color: #fefefe;
     border-bottom: 2px solid transparent;
     margin-bottom: -2px;
@@ -468,12 +484,12 @@ figcaption{
 }
 
 .tab-nav label:hover {
-    color: #555;
+    color: var(--golden);
 }
 
 #tab-jugadores:checked ~ .tab-nav label[for="tab-jugadores"],
 #tab-paises:checked ~ .tab-nav label[for="tab-paises"] {
-    color: #555;
+    color: var(--golden);
     border-bottom-color: #1e1e1e;
 }
 
@@ -589,13 +605,14 @@ figcaption{
     border-radius: 6px;
 }
 
-/* ===== Alumno ===== */
 .alumno {
     display: flex;
     gap: 2rem;
     max-width: 900px;
     margin: 2rem auto;
-    background: #fff;
+    color: #1e1e1e;
+    background-color: #fefefe;
+    border: 5px solid #1e1e1e;
     border-radius: 15px;
     padding: 2rem;
     box-shadow: 0 2px 16px rgba(0,0,0,0.06);
@@ -608,6 +625,7 @@ figcaption{
 }
 
 .alumno figure img {
+    border: 3px solid #1e1e1e;
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -640,16 +658,16 @@ figcaption{
 }
 
 .alumno ul a {
-    color: #1e1e1e;
+    color: var(--golden);
     text-decoration: underline;
     font-size: 0.9rem;
 }
 
-/* ===== Contacto ===== */
 .contacto {
     max-width: 600px;
     margin: 2rem auto;
-    background: #fff;
+    color: #1e1e1e;
+    background-color: #fefefe;
     border-radius: 15px;
     padding: 2rem;
     box-shadow: 0 2px 16px rgba(0,0,0,0.06);
@@ -658,11 +676,11 @@ figcaption{
 .contacto p {
     font-size: 1rem;
     line-height: 1.6;
-    color: #555;
     margin-bottom: 1.5rem;
 }
 
 .contacto form {
+    border: 5px solid #1e1e1e;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -1013,8 +1031,10 @@ form > a:hover {
     border-radius: 8px;
 }
 
-.carrito-footer p {
+.carrito-footer a {
     font-size: 1.1rem;
+    margin: auto;
+    width: 20%;
 }
 
 .compra-exitosa h3 {
@@ -1025,11 +1045,17 @@ form > a:hover {
 .compra-card {
     background: rgba(255,255,255,0.05);
     border-radius: 8px;
+    margin: auto;
     margin-bottom: 1.5rem;
     overflow: hidden;
+    width: 80%;
+    max-width: 700px;
 }
 .compra-card .tabla {
     margin: 1rem auto;
+}
+.compra-card td{
+    width: 25%;
 }
 
 .pitch {
@@ -1096,6 +1122,7 @@ form > a:hover {
 }
 
 .formacion-nav {
+    width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

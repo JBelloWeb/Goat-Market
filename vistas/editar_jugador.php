@@ -59,9 +59,9 @@
     <?php if($jugador->getImagen()): ?>
     <div>
         <p>Foto actual</p>
-        <picture>
-            <img src="assets/img/<?= rawurlencode($jugador->getImagen()) ?>" alt="<?= htmlspecialchars($jugador->getNombre()) ?>" width="150">
-        </picture>
+        <figure>
+            <img style="object-fit: cover" src="assets/img/<?= rawurlencode($jugador->getImagen()) ?>" alt="<?= htmlspecialchars($jugador->getNombre()) ?>" width="150">
+        </figure>
         <div>
             <label for="foto">Actualizar Foto</label>
             <input type="file" id="foto" name="foto">
