@@ -1037,7 +1037,8 @@ form > a:hover {
     aspect-ratio: 2 / 3;
     max-width: 480px;
     margin: 0 auto;
-    background: #2e7d32;
+    background: url(../img/Pitch.webp);
+    background-size: cover;
     border-radius: 12px;
     box-shadow: 0 0 0 3px #fff, 0 0 0 5px #1e1e1e;
 }
