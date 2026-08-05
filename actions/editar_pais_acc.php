@@ -24,8 +24,8 @@
         die("El nombre del país es obligatorio.");
     }
 
-    if($estrellas < 0 || $estrellas > 5){
-        die("Las estrellas deben estar entre 0 y 5.");
+    if($estrellas < 0 || $estrellas > 99){
+        die("Las estrellas deben estar entre 0 y 99.");
     }
 
     $pais = Pais::get_x_id($id);

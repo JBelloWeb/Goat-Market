@@ -35,7 +35,7 @@
             <div>
                 <p><?= htmlspecialchars($jugador->getDescripcion()) ?></p>
                 <div>
-                    <span><?= htmlspecialchars($jugador->getPais()) ?> <?= str_repeat('★', $jugador->getPaisEstrellas()) ?></span>
+                    <span><?= htmlspecialchars($jugador->getPais()) ?> <?= $jugador->getPaisEstrellas() > 5 ? $jugador->getPaisEstrellas() . '★' : str_repeat('★', $jugador->getPaisEstrellas()) ?></span>
                     <span><?= $jugador->getEdad() ?> años</span>
                     <?php if (!empty($posicionesJugador)): ?>
                         <?php foreach($posicionesJugador as $pos): ?>

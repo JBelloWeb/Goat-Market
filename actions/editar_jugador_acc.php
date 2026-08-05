@@ -80,7 +80,7 @@
                     }
                 }
             } else {
-                $jugador->edit($nombre, $descripcion, $precio, $fecha_nacimiento, $jugador->getImagen(), $pais_id);
+                $jugador->edit($nombre, $descripcion, $precio, $fecha_nacimiento, $jugador->getImagen() ?? "default.png", $pais_id);
             }
 
             Posiciones::guardarPosicionesJugador($id, $posiciones);

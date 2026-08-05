@@ -7,7 +7,7 @@
     </div>
     <div>
         <label for="estrellas">Estrellas</label>
-        <input type="number" id="estrellas" name="estrellas" min="0" max="5" required>
+        <input type="number" id="estrellas" name="estrellas" min="0" max="99" required>
     </div>
     <div>
         <label for="color">Color</label>

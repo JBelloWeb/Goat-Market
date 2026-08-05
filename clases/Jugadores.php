@@ -134,7 +134,7 @@ class Jugadores
     return $jugadores;
   }
 
-  public static function insert(string $nombre, string $descripcion, float $precio, string $fecha_nacimiento, string $imagen, int $pais_id){
+  public static function insert(string $nombre, ?string $descripcion, float $precio, string $fecha_nacimiento, ?string $imagen, int $pais_id){
     $conexion = Conexion::getConexion();
     $query = "INSERT INTO jugadores (`nombre_apellido`, `descripcion`, `precio`, `fecha_nacimiento`, `imagen`, `pais_id`) VALUES (:nombre, :descripcion, :precio, :fecha_nacimiento, :imagen, :pais_id)";
 

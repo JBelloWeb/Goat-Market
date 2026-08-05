@@ -18,7 +18,7 @@
         </div>
         <div>
             <label for="estrellas">Estrellas</label>
-            <input type="number" id="estrellas" name="estrellas" min="0" max="5" value="<?= $pais->getEstrellas() ?>" required>
+            <input type="number" id="estrellas" name="estrellas" min="0" max="99" value="<?= $pais->getEstrellas() ?>" required>
         </div>
         <div>
             <label for="color">Color</label>

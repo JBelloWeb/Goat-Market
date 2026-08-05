@@ -22,6 +22,7 @@
     $fecha_nacimiento = isset($_POST['fecha_nacimiento']) ? $_POST['fecha_nacimiento'] : '';
     $pais_id = isset($_POST['pais_id']) ? (int) $_POST['pais_id'] : 0;
     $posiciones = isset($_POST['posiciones']) ? $_POST['posiciones'] : [];
+    $imagen = "default.png";
 
     if($nombre === ''){
         die("El nombre del jugador es obligatorio.");
@@ -62,6 +63,7 @@
         $extension = end($nombreOriginal);
         $nombreNuevo = time() . rand(1, 99) . ".$extension";
         move_uploaded_file($datosArchivo['tmp_name'], "../assets/img/$nombreNuevo");
+        $imagen = $nombreNuevo;
     }
 
     try{
@@ -70,7 +72,7 @@
             $descripcion,
             $precio,
             $fecha_nacimiento,
-            $nombreNuevo,
+            $imagen,
             $pais_id
         );
 

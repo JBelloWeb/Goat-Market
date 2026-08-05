@@ -28,8 +28,8 @@
         <p><?= "€" . $jugador->getPrecio() . " Millones" ?></p>
     </div>
     <div class="to-hide">
-        <h4><?= $jugador->getEdad() ?> años</h4>
+        <h4 class="edad"><?= $jugador->getEdad() ?> años</h4>
         <p><?= $jugador->getDescripcion() . " - " . $jugador->getPais() ?></p>
-        <span class="estrellas"><?= str_repeat('★', $jugador->getPaisEstrellas()) ?></span>
+        <span class="estrellas"><?= $jugador->getPaisEstrellas() > 5 ? $jugador->getPaisEstrellas() . '★' : str_repeat('★', $jugador->getPaisEstrellas()) ?></span>
     </div>
 </div>

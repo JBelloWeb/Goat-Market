@@ -178,6 +178,15 @@ nav ul{
     padding: 20px;
 }
 
+.edad{
+    background-color: var(--text-color);
+    color: var(--main-color);
+    width: fit-content;
+    padding: 0.2rem;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
 #navFiltro{
     background-color: #1e1e1e;
     color: #fefefe;
@@ -911,7 +920,9 @@ form > a:hover {
 }
 
 .btn-cancelar {
-    display: inline-block;
+    display: block;
+    width: fit-content;
+    margin: auto;
     padding: 0.75rem 2rem;
     border-radius: 6px;
     font-weight: 500;
