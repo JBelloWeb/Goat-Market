@@ -169,7 +169,7 @@ nav ul{
     background-color: #fefefe;
     color: #1e1e1e;
     width: 100%;
-    max-height: 600px;
+    max-height: 800px;
     overflow: scroll;
     display: flex;
     flex-wrap: wrap;
