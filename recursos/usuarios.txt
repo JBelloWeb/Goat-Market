@@ -1,0 +1,18 @@
+LISTA DE USUARIOS / CONTRASEÑAS - GOAT MARKET
+==============================================
+
+Base de datos: goat_market (MySQL/MariaDB, tabla `usuarios`)
+Las contraseñas estan cifradas en la base (password_hash / bcrypt).
+
+USUARIOS DE PRUEBA
+------------------
+Usuario    | Correo            | Contraseña | Permiso
+-----------|-------------------|------------|----------------
+Juani      | juani@goat.com    | 1234       | Cliente
+Ale        | ale@goat.com      | 1234       | Administrador
+
+OBSERVACIONES
+-------------
+- "Juani" = Frontend (catalogo, carrito, mis compras, equipo).
+- "Ale" = Frontend + Backend (panel de administrador: ABM de jugadores y paises).
+- Este archivo es de entrega academica. En produccion jamas se documenta una clave en claro.

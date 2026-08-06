@@ -5,6 +5,7 @@ class Usuario
 {
   private $id;
   private $nombre;
+  private $email;
   private $contraseña;
   private $es_administrador;
 
@@ -14,6 +15,10 @@ class Usuario
 
   public function getNombre(){
     return $this -> nombre;
+  }
+
+  public function getEmail(){
+    return $this -> email;
   }
 
   public function getEsAdministrador(){
@@ -26,6 +31,10 @@ class Usuario
 
   public function setNombre($nombre){
     $this -> nombre = $nombre;
+  }
+
+  public function setEmail($email){
+    $this -> email = $email;
   }
 
   public function setContraseña($contraseña){
@@ -70,16 +79,17 @@ class Usuario
     return $usuario;
   }
 
-  public static function insert(string $nombre, string $contraseña, int $es_administrador){
+  public static function insert(string $nombre, string $email, string $contraseña, int $es_administrador){
     $conexion = Conexion::getConexion();
 
     $hash = password_hash($contraseña, PASSWORD_DEFAULT);
 
-    $query = "INSERT INTO usuarios (`nombre`, `contraseña`, `es_administrador`) VALUES (:nombre, :contraseña, :es_administrador)";
+    $query = "INSERT INTO usuarios (`nombre`, `email`, `contraseña`, `es_administrador`) VALUES (:nombre, :email, :contraseña, :es_administrador)";
 
     $PDOStatement = $conexion -> prepare($query);
     $PDOStatement -> execute([
       'nombre' => $nombre,
+      'email' => $email,
       'contraseña' => $hash,
       'es_administrador' => $es_administrador
     ]);

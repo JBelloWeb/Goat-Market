@@ -338,10 +338,12 @@ DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `contraseña` varchar(255) NOT NULL,
   `es_administrador` tinyint(1) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `nombre` (`nombre`)
+  UNIQUE KEY `nombre` (`nombre`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -351,7 +353,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Juani','$2y$10$EHqN7BQluzCaURR/WTO70OUn1b4YS5Cxvs2fBkFw38mllIQo1pzGS',0),(2,'Ale','$2y$10$EHqN7BQluzCaURR/WTO70OUn1b4YS5Cxvs2fBkFw38mllIQo1pzGS',1);
+INSERT INTO `usuarios` VALUES (1,'Juani','juani@goat.com','$2y$10$EHqN7BQluzCaURR/WTO70OUn1b4YS5Cxvs2fBkFw38mllIQo1pzGS',0),(2,'Ale','ale@goat.com','$2y$10$EHqN7BQluzCaURR/WTO70OUn1b4YS5Cxvs2fBkFw38mllIQo1pzGS',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
